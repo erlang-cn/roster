@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Roster by synrc</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Roster</h1>
+      <h2 class="project-tagline">Simple Messaging Protocol</h2>
+      <a href="https://github.com/synrc/roster" class="btn">View on GitHub</a>
+      <a href="https://github.com/synrc/roster/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/synrc/roster/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="roster-n2o-protocol" class="anchor" href="#roster-n2o-protocol" aria-hidden="true"><span class="octicon octicon-link"></span></a>Roster N2O Protocol</h1>
+
+<p>Roster protocol is a part of N2O IoT and WebSocket
+protocol stack for messaging applications and server implementations.
+Roster protocol has several sub-protocols, containing following messages:</p>
+
+<div class="highlight highlight-erlang"><pre><span class="pl-c">% roster</span>
+-<span class="pl-k">record</span>(<span class="pl-en">'Auth'</span>,{<span class="pl-smi">username</span>, <span class="pl-smi">token</span>, <span class="pl-smi">services</span>}).
+-<span class="pl-k">record</span>(<span class="pl-en">'Person'</span>,{<span class="pl-smi">id</span>, <span class="pl-smi">name</span>, <span class="pl-smi">surname</span>, <span class="pl-smi">username</span>, <span class="pl-smi">status</span>}).
+-<span class="pl-k">record</span>(<span class="pl-en">'Presence'</span>,{<span class="pl-smi">size</span>, <span class="pl-smi">userlist</span>}).
+-<span class="pl-k">record</span>(<span class="pl-en">'Friend'</span>,{<span class="pl-smi">user</span>, <span class="pl-smi">status</span>}).
+-<span class="pl-k">record</span>(<span class="pl-en">'Confirm'</span>,{<span class="pl-smi">user</span>, <span class="pl-smi">type</span>}).
+-<span class="pl-k">record</span>(<span class="pl-en">'Private'</span>,{<span class="pl-smi">id</span>, <span class="pl-smi">author</span>, <span class="pl-smi">body</span>, <span class="pl-smi">status</span>}).
+-<span class="pl-k">record</span>(<span class="pl-en">'Typing'</span>,{<span class="pl-smi">author</span>}).
+
+<span class="pl-c">% muc</span>
+-<span class="pl-k">record</span>(<span class="pl-en">'Room'</span>,{<span class="pl-smi">room</span>, <span class="pl-smi">description</span>, <span class="pl-smi">acl</span>, <span class="pl-smi">settings</span>}).
+-<span class="pl-k">record</span>(<span class="pl-en">'Join'</span>,{<span class="pl-smi">user</span>, <span class="pl-smi">room</span>, <span class="pl-smi">answer</span>}).
+-<span class="pl-k">record</span>(<span class="pl-en">'Public'</span>,{<span class="pl-smi">id</span>, <span class="pl-smi">room</span>, <span class="pl-smi">message</span>, <span class="pl-smi">author</span>}).
+
+<span class="pl-c">% search</span>
+-<span class="pl-k">record</span>(<span class="pl-en">'Retrieve'</span>,{<span class="pl-smi">id</span>, <span class="pl-smi">chat</span>}).
+-<span class="pl-k">record</span>(<span class="pl-en">'Mark'</span>,{<span class="pl-smi">id</span>, <span class="pl-smi">room</span>, <span class="pl-smi">status</span>}).
+-<span class="pl-k">record</span>(<span class="pl-en">'Search'</span>,{<span class="pl-smi">id</span>, <span class="pl-smi">body</span>, <span class="pl-smi">author</span>}).</pre></div>
+
+<p>You may refer to full N2O protocol here: <a href="http://5ht.github.io/n2o.htm">http://5ht.github.io/n2o.htm</a></p>
+
+<div class="highlight highlight-erlang"><pre>
+<span class="pl-k">&gt;</span>  <span class="pl-en">iolist_to_binary</span>(<span class="pl-en">smp_js</span>:<span class="pl-en">auth</span>(<span class="pl-s"><span class="pl-pds">"</span>maxim<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>123<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>12<span class="pl-pds">"</span></span>)).
+&lt;&lt;<span class="pl-s"><span class="pl-pds">"</span>ws.send(enc(tuple(atom('Auth'),bin('maxim'),bin('123'),'12')));<span class="pl-pds">"</span></span>&gt;&gt;
+</pre></div>
+
+<h2>
+<a id="credits" class="anchor" href="#credits" aria-hidden="true"><span class="octicon octicon-link"></span></a>Credits</h2>
+
+<ul>
+<li>Maxim Sokhatsky</li>
+<li>Oleg Zinchenko</li>
+</ul>
+
+<p>OM A HUM</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/synrc/roster">Roster</a> is maintained by <a href="https://github.com/synrc">synrc</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
+
